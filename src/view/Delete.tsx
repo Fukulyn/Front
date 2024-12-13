@@ -21,8 +21,8 @@ export default function Delete() {
     //頁面jsx
     return (
         <>
-            <input type="text" placeholder="請輸入ID" value={inputValue} onChange={(e) => setInputValue(e.target.value)} /> //更新輸入盒文字狀態
-            <a onClick={handleDelete}>刪除</a>
+            <input type="text" placeholder="請輸入ID" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+            <button onClick={handleDelete}>刪除</button>
         </>
 
     )
