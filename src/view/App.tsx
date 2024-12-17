@@ -4,6 +4,7 @@ import { asyncGet } from '../utils/fetch'
 import { api } from '../enum/api'
 import { Student } from '../interface/Student'
 import { resp } from '../interface/resp'
+import Navigation from './Navigation'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
   const studentList = students ? students.map((student: Student) => {
     return (
       <div className='student' key={student._id}>
+        <p>ID: {student._id}</p>
         <p>帳號: {student.userName}</p>
         <p>座號: {student.sid}</p>
         <p>姓名: {student.name}</p>
@@ -42,6 +44,7 @@ function App() {
 
   return (
     <>
+      <Navigation />
       <div className="container">
         {studentList}
       </div>

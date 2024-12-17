@@ -1,0 +1,152 @@
+/* src/style/Add.css */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #f4f6f7;
+  --text-color: #2c3e50;
+  --white: #ffffff;
+  --accent-color: #8e44ad;
+  --gradient-primary: linear-gradient(135deg, #3498db, #2980b9);
+  --shadow-subtle: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-medium: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.add_container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+  transform: perspective(1000px);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.add_container:hover {
+  transform: perspective(1000px) rotateX(2deg);
+}
+
+.add_container h1 {
+  background: var(--gradient-primary);
+  color: var(--white);
+  text-align: center;
+  padding: 25px;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.add_container h1::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, transparent, var(--white), transparent);
+}
+
+.add_container form {
+  padding: 40px;
+  background: linear-gradient(to bottom right, var(--background-color), #f0f4f8);
+}
+
+.txt_field {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.txt_field input {
+  width: 93%;
+  padding: 15px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  outline: none;
+  background: linear-gradient(to right, #f1f3f5, #f8f9fa);
+  font-size: 16px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.txt_field input:focus {
+  border-color: var(--primary-color);
+  background: var(--white);
+  box-shadow: 0 8px 15px rgba(52,152,219,0.1);
+  transform: scale(1.02);
+}
+
+.txt_field label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: #7f8c8d;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  background: transparent;
+  padding: 0 5px;
+}
+
+.txt_field input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 15px;
+  font-size: 12px;
+  color: var(--primary-color);
+  background: var(--white);
+}
+.txt_field input:focus + label {
+  display: none;
+}
+
+.add_container button {
+  width: 100%;
+  padding: 15px;
+  background: var(--gradient-primary);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.add_container button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: all 0.4s;
+}
+
+.add_container button:hover::before {
+  left: 100%;
+}
+
+.add_container button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.message {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.message.error {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
