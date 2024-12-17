@@ -6,13 +6,13 @@ import Navigation from './Navigation'
 import { resp } from "../interface/resp";
 import { Student } from "../interface/Student";
 export default function Add() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Student>({
     userName: "",
     name: "",
     department: "",
     grade: "",
     class: "",
-    email: "",
+    Email: "",
   });
 
   const [message, setMessage] = useState<string>("");
@@ -37,7 +37,7 @@ export default function Add() {
                     department: "",
                     grade: "",
                     class: "",
-                    email: "",
+                    Email: "",
                 });
             } else {
                 setMessage(`新增失敗: ${response?.message || "請稍後再試"}`);
@@ -55,7 +55,7 @@ export default function Add() {
         { name: "department", label: "系級", type: "text" },
         { name: "grade", label: "年級", type: "text" },
         { name: "class", label: "班級", type: "text" },
-        { name: "email", label: "電子郵件", type: "email" },
+        { name: "Email", label: "電子郵件", type: "Email" },
       ];
       return (
         <>

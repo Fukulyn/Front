@@ -11,7 +11,7 @@ export default function Delete() {
     const [isError, setIsError] = useState<boolean>(false); // 控制消息是否為錯誤
 
     function handleInputPlaceholder(): string {
-        return "請輸入學生" + (selectedOption === "id" ? "ID" : "姓名");
+        return "請輸入學生" + ("姓名");
     }
 
     async function handleDelete(e: React.FormEvent) {
@@ -24,7 +24,7 @@ export default function Delete() {
         }
 
         const apiEndpoint =
-             `${api.deleteById}?id=${inputValue}`
+                `${api.deletedByName}?name=${inputValue}`;
 
         try {
             const response = await asyncDelete(apiEndpoint);
@@ -49,6 +49,8 @@ export default function Delete() {
             <div className="delete_container">
                 <h1>刪除學生</h1>
                 <form onSubmit={handleDelete}>
+                    <div>
+                    </div>
                     <input
                         type="text"
                         placeholder={handleInputPlaceholder()}

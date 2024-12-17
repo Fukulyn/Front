@@ -1,5 +1,5 @@
 export interface Student {
-    _id: string;
+    _id?: string;
 
     /**
      * 帳號
@@ -9,7 +9,7 @@ export interface Student {
     /**
      * 座號
      */
-    sid: string;
+    sid?: string;
 
     /**
      * 姓名
@@ -34,7 +34,7 @@ export interface Student {
     /**
      * Email
      */
-    email: string;
+    Email: string;
 
     /**
      * 缺席次數

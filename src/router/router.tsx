@@ -11,8 +11,8 @@ export const router = createHashRouter([
     },
 
     {
-        path: "/delete", // 分頁名稱 => localhost:5173/#/delete
-        element: <Delete /> // 根據Delete.tsx的export name
+        path: "/delete", 
+        element: <Delete /> 
     },
 
     {
