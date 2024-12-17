@@ -36,8 +36,4 @@ export interface Student {
      */
     Email: string;
 
-    /**
-     * 缺席次數
-     */
-    absences?: number | undefined;
 }

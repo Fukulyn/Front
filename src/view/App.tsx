@@ -35,7 +35,6 @@ function App() {
         <p>年級: {student.grade}</p>
         <p>班級: {student.class}</p>
         <p>Email: {student.Email}</p>
-        <p>缺席次數: {student.absences ? student.absences : 0}</p>
       </div>
     )
   }) : "loading"

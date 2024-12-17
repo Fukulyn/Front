@@ -13,7 +13,8 @@ export default function UpdateName() {
         department: "",
         grade: "",
         class: "",
-        email: "",
+        Email: "",
+        absences: "",
     });
     const [showUserData, setShowUserData] = useState<boolean>(false);
     const [message, setMessage] = useState<string>("");
@@ -45,17 +46,17 @@ export default function UpdateName() {
     }
 
     async function handleUpdate() {
-        const updatedData: any = {};
-
-        for (const key in userData) {
-            if (userData[key]?.trim()) {
-                updatedData[key] = userData[key];
+        Object.keys(userData).forEach((key) => {
+            if (typeof userData[key] === 'string') {
+                userData[key] = userData[key].trim();
+            } else {
+                userData[key] = '';
             }
-        }
+        });
 
         try {
             const response = 
-                await asyncPut(`${api.updateByName}?name=${inputValue}`, updatedData);
+                await asyncPut(`${api.updateByName}?name=${inputValue}`, userData);
 
             if (response?.code === 200) {
                 setMessage("")
@@ -76,7 +77,6 @@ export default function UpdateName() {
         { label: "年級", key: "grade" },
         { label: "班級", key: "class" },
         { label: "Email", key: "Email" },
-        { label: "缺席", key: "absences?" },
     ];
 
     return (
