@@ -13,6 +13,11 @@ cd Back
 `Front` 目錄下  
 複製 `.env.example` 到 `.env`  
 
+配置環境變數
+```
+VITE_IP = api_url  
+```
+
 本地運行:  
 ```
 cd Front
@@ -23,9 +28,25 @@ npm run dev
 
 `Back` 目錄下  
 複製 `.env.example` 到 `.env`  
-修改變數配置  
+
+配置環境變數
+```
+DBUSER=test               # 資料庫使用者
+DBPASSWORD=password       # 資料庫密碼
+DBHOST=127.0.0.1          # 資料庫連線位置
+DBPORT=8974               # 資料庫連線埠
+DBNAME=name               # 資料庫名稱
+PORT=2083                 # 後端監聽位置
+LogPath=logs              # log生成位置
+assetsPath=/assets        # assets生成位置
+HomePagePath=/index.html  # 首頁位置
+privateKey=key            # 私密金鑰
+```
+
 運行  
 ```
+cd Back
+npm install
 npm run dev
 ```
 
