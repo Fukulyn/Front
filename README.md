@@ -267,7 +267,7 @@ npm run dev
 
 # 架構圖 / 流程圖
 
-![image]](https://github.com/Fukulyn/Front/blob/main/src/%E7%B3%BB%E7%B5%B1%E6%9E%B6%E6%A7%8B%E5%9C%96.drawio.png))
+![image](https://github.com/Fukulyn/Front/blob/main/src/%E7%B3%BB%E7%B5%B1%E6%9E%B6%E6%A7%8B%E5%9C%96.drawio.png)
 
 ---
 
