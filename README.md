@@ -19,23 +19,15 @@ cd Front
 npm install
 npm run dev
 ```
-Expose:
-```
-npm run dev -- --host
-```
-修改 `VITE_API_BASE_URL` 成 expose 的網路介面
-
-
 ## 後端
 
-`Backend` 目錄下  
+`Back` 目錄下  
 複製 `.env.example` 到 `.env`  
 修改變數配置  
 運行  
 ```
 npm run dev
 ```
-
 
 ## 資料庫
 
@@ -61,12 +53,12 @@ npm run dev
 
 # API 規格說明
 
-`Backend/src/Service/UserService.ts`  
+`Back/src/Service/UserService.ts`  
 - GET /api/v1/user/findAll (取得全部學生資料，且按 sid (座號) 排序)  
     ```
-    public async getAllStudents(): Promise<Array<DBResp<Student>> | undefined>
+    public async getAllStudents(): Promise<Array<DBResp<Student>>|undefined>
     ```
-    response example  
+     請求範例 
     - 200
         ```
         {
@@ -107,44 +99,42 @@ npm run dev
     ```
     public async insertOne(info: Student): Promise<resp<DBResp<Student> | undefined>>
     ```
-    request example
+    請求範例
     - body
         ```
         {
-            "userName":"tkuim0312",
-            "name":"測試用戶",
-            "department":"資訊管理系",
-            "grade":"3",
-            "class":"C",
-            "Email":"test@mail.com",
-            "absences":10
+            "userName": "tkubm11111",
+            "name": "慧",
+            "department": "系",
+            "grade": "四年級",
+            "class": "A",
+            "Email": "tku787@tkuim.com"
         }
         ```
-    response example
+    回傳範例
     - 200
         ```
-        {
-            "code": 200,
-            "message": "",
-            "body": {
-                "userName": "tkuim0312",
-                "sid": "52",
-                "name": "測試用戶",
-                "department": "資訊管理系",
-                "grade": "3",
-                "class": "C",
-                "Email": "test@mail.com",
-                "absences": 10,
-                "_id": "6756812efb244feeea3bad83",
-                "__v": 0
-            }
-        }
+       {
+          "code": 200,
+          "message": "insert success",
+          "body": {
+                  "userName": "tkubm11111",
+                  "sid": "51",
+                  "name": "慧",
+                  "department": "系",
+                  "grade": "四年級",
+                  "class": "A",
+                  "Email": "tku787@tkuim.com",
+                  "_id": "6762134ca50c72e40b87b7f3",
+                  "__v": 0
+                 }
+         }
         ```
     - 403
         ```
         {
             "code": 403,
-            "message": "student list is full"
+            "message": "座號已存在"
         }
         ```
     - 500
@@ -156,47 +146,43 @@ npm run dev
         ```
 - PUT /api/v1/user/updateByID (使用 ID 為索引更新學生資料)
     ```
-    public async updateByID(id: string, info: Student): Promise<resp<DBResp<Student> | string>>
+   public async updateByName(name: string, updateData: Student): Promise<resp<DBResp<Student> | undefined>>
     ```
-    request example
-    - id
+  請求範例
+    - name
         ```
-        id=6756812efb244feeea3bad83
+        name=慧
         ```
     - body
         ```
         {
-            "_id":"6756812efb244feeea3bad83",
-            "userName":"tkuim0312",
-            "sid":"52",
-            "name":"測試用戶",
-            "department":"資訊管理系",
-            "grade":"3",
-            "class":"C",
-            "Email":"test@mail.com",
-            "absences":11,
-            "__v":0
+            "_id": "6762134ca50c72e40b87b7f3",
+            "userName": "tkubm11111",
+            "sid": "51",
+            "name": "張",
+            "department": "系",
+            "grade": "四年級",
+            "class": "A",
+            "Email": "tku787@tkuim.com"
         }
         ```
-    response example
+     回傳範例
     - 200
         ```
-        {
+          {
             "code": 200,
-            "message": "update success",
+            "message": "Update successful",
             "body": {
-                "_id": "6756812efb244feeea3bad83",
-                "userName": "tkuim0312",
-                "sid": "52",
-                "name": "測試用戶",
-                "department": "資訊管理系",
-                "grade": "3",
-                "class": "C",
-                "Email": "test@mail.com",
-                "absences": 11,
-                "__v": 0
+                "_id": "6762134ca50c72e40b87b7f3",
+                "userName": "tkubm11111",
+                "sid": "51",
+                "name": "張",
+                "department": "系",
+                "grade": "四年級",
+                "class": "A",
+                "Email": "tku787@tkuim.com"
             }
-        }
+         }
         ```
     - 404
         ```
@@ -205,22 +191,6 @@ npm run dev
             "message": "user not found"
         }
         ```
-    - 403 (座號已存在)
-        ```
-        {
-            "code": 403,
-            "message": "sid already exists"
-        }
-        ```
-    - 403 (用戶名驗證失敗)
-        ```
-        {
-            "code": 403,
-            "message": ${驗證失敗資訊}
-        }
-        ```
-        驗證失敗資訊 :   
-        `'學生名字格式不正確，應為 tku + 科系縮寫 + 四碼帳號，例如: tkubm1760' | '帳號已存在' | '校名必須為 tku' | '帳號格式不正確，必須為四位數字。'`
     - 500
         ```
         {
@@ -228,16 +198,16 @@ npm run dev
             "message": "server error"
         }
         ```
-- DELETE /api/v1/user/deleteByID (使用 ID 刪除學生)
+- DELETE /api/v1/user/deleteByName (使用 ID 刪除學生)
     ```
-    public async deleteByID(id: string): Promise<resp<DeleteResult>>
+    public async deletedByName(name: string): Promise<resp<DBResp<Student> | undefined>>
     ```
-    request example
-    - id
+     請求範例
+    - name
         ```
-        id=6756812efb244feeea3bad83
+        name=慧
         ```
-    response example
+     回傳範例
     - 200
         ```
             {
@@ -253,7 +223,7 @@ npm run dev
         ```
             {
                 "code": 404,
-                "message": "No student found with the provided ID",
+                "message": "user not found",
                 "body":{
                     "acknowledged":false,
                     "deletedCount":0
