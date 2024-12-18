@@ -144,7 +144,7 @@ npm run dev
             "message": "server error"
         }
         ```
-- PUT /api/v1/user/updateByID (使用 ID 為索引更新學生資料)
+- PUT /api/v1/user/updateByName (使用 name(名字) 為索引更新學生資料)
     ```
    public async updateByName(name: string, updateData: Student): Promise<resp<DBResp<Student> | undefined>>
     ```
@@ -198,7 +198,7 @@ npm run dev
             "message": "server error"
         }
         ```
-- DELETE /api/v1/user/deleteByName (使用 ID 刪除學生)
+- DELETE /api/v1/user/deleteByName (使用 name 刪除學生)
     ```
     public async deletedByName(name: string): Promise<resp<DBResp<Student> | undefined>>
     ```
@@ -252,4 +252,3 @@ npm run dev
 
 # Project Demo
 
-https://youtu.be/KbEKRr7Lshc
