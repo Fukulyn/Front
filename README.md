@@ -58,7 +58,7 @@ npm run dev
     ```
     public async getAllStudents(): Promise<Array<DBResp<Student>>|undefined>
     ```
-     請求範例 
+     回傳範例 
     - 200
         ```
         {
