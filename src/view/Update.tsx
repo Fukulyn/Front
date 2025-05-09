@@ -2,7 +2,7 @@ import { useState } from "react";
 import { asyncGet, asyncPut } from "../utils/fetch";
 import { api } from "../enum/api";
 import "../style/Update.css";
-import Navigation from "./Navigation";
+import Nav from "./Nav";
 
 export default function UpdateName() {
     const [selectedOption, setSelectedOption] = useState<string>("id");
@@ -20,11 +20,11 @@ export default function UpdateName() {
     const [message, setMessage] = useState<string>("");
     const [isError, setIsError] = useState<boolean>(false);
 
-    function handleInputPlaceholder(): string {
+    function InputPlaceholder(): string {
         return "請輸入學生" + ("姓名");
     }
 
-    async function handleQueryUser() {
+    async function FindUser() {
         const apiEndpoint = `${api.findByName}?name=${inputValue}`;
 
         try {
@@ -45,7 +45,7 @@ export default function UpdateName() {
         }
     }
 
-    async function handleUpdate() {
+    async function UpdateUserInfo() {
         Object.keys(userData).forEach((key) => {
             if (typeof userData[key] === 'string') {
                 userData[key] = userData[key].trim();
@@ -81,13 +81,13 @@ export default function UpdateName() {
 
     return (
         <>
-            <Navigation />
+            <Nav />
             <div className="update_container">
                 <h1>更新學生資料</h1>
-                <form onSubmit={(e) => { e.preventDefault(); handleQueryUser(); }}>
+                <form onSubmit={(e) => { e.preventDefault(); FindUser(); }}>
                     <div>
                     </div>
-                    <input type="text" placeholder={handleInputPlaceholder()} value={inputValue} onChange={(e) => setInputValue(e.target.value)} required />
+                    <input type="text" placeholder={InputPlaceholder()} value={inputValue} onChange={(e) => setInputValue(e.target.value)} required />
                     <button type="submit">查詢學生</button>
                 </form>
                 {message && <p className={`message ${isError ? "error" : ""}`}>{message}</p>}
@@ -107,7 +107,7 @@ export default function UpdateName() {
                             />
                         </div>
                     ))}
-                    <button onClick={handleUpdate}>更新資料</button>
+                    <button onClick={UpdateUserInfo}>更新資料</button>
                 </div>
             )}
         </>

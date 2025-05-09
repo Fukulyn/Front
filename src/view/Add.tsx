@@ -2,7 +2,7 @@ import { api } from "../enum/api"
 import { useState } from "react"
 import { asyncPost } from "../utils/fetch";
 import "../style/Add.css"
-import Navigation from './Navigation'
+import Nav from './Nav'
 import { resp } from "../interface/resp";
 import { Student } from "../interface/Student";
 export default function Add() {
@@ -18,12 +18,12 @@ export default function Add() {
   const [message, setMessage] = useState<string>("");
     const [isError, setIsError] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const Change = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const Submit = async (e: React.FormEvent) => {
         e.preventDefault(); // 防止表單預設提交行為
 
         try {
@@ -59,10 +59,10 @@ export default function Add() {
       ];
       return (
         <>
-            <Navigation />
+            <Nav />
             <div className="add_container">
                 <h1>新增學生</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={Submit}>
                 {formFields.map((field) => (
                 <div className="txt_field" key={field.name}>
                     <input
@@ -70,7 +70,7 @@ export default function Add() {
                     placeholder=" "
                     name={field.name}
                     value={formData[field.name as keyof typeof formData]}
-                    onChange={handleChange} 
+                    onChange={Change} 
                     required
                     />
                     <span></span>

@@ -4,7 +4,7 @@ import { asyncGet } from '../utils/fetch'
 import { api } from '../enum/api'
 import { Student } from '../interface/Student'
 import { resp } from '../interface/resp'
-import Navigation from './Navigation'
+import Nav from './Nav'
 function App() {
 
   const [students, setStudents] = useState<Array<Student>>([])
@@ -41,7 +41,7 @@ function App() {
 
   return (
     <>
-      <Navigation />
+      <Nav />
       <div className="container">
         {studentList}
       </div>

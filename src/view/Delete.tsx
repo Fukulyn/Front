@@ -2,7 +2,7 @@ import { useState } from "react";
 import { asyncDelete } from "../utils/fetch";
 import { api } from "../enum/api";
 import "../style/Delete.css";
-import Navigation from "./Navigation";
+import Nav from "./Nav";
 
 export default function Delete() {
     const [selectedOption, setSelectedOption] = useState<string>("id");
@@ -10,11 +10,11 @@ export default function Delete() {
     const [message, setMessage] = useState<string>(""); // 新增的 message 狀態
     const [isError, setIsError] = useState<boolean>(false); // 控制消息是否為錯誤
 
-    function handleInputPlaceholder(): string {
+    function InputPlaceholder(): string {
         return "請輸入學生" + ("姓名");
     }
 
-    async function handleDelete(e: React.FormEvent) {
+    async function DeleteUser(e: React.FormEvent) {
         e.preventDefault(); // 防止表單默認提交行為
 
         if (!inputValue.trim()) {
@@ -45,15 +45,15 @@ export default function Delete() {
 
     return (
         <>
-            <Navigation />
+            <Nav />
             <div className="delete_container">
                 <h1>刪除學生</h1>
-                <form onSubmit={handleDelete}>
+                <form onSubmit={DeleteUser}>
                     <div>
                     </div>
                     <input
                         type="text"
-                        placeholder={handleInputPlaceholder()}
+                        placeholder={InputPlaceholder()}
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         required

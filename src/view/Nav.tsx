@@ -1,8 +1,8 @@
-import "../style/Navigation.css";
+import "../style/Nav.css";
 
-export default function Navigation() {
+export default function Nav() {
     return (
-        <nav className="navigation">
+        <nav className="nav">
             <div className="nav-title">
                 <a href="/" className="home-link">學生管理系統</a>
             </div>
